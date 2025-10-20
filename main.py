@@ -9,6 +9,11 @@ api_key = os.environ.get("GEMINI_API_KEY")
 # connect to API and send prompt
 client = genai.Client(api_key=api_key)
 prompt = sys.argv
+
+
+if prompt[1] == "":
+    sys.exit(1)
+
 response = client.models.generate_content(model="gemini-2.0-flash-001", contents=prompt)
 
 print(response.text)
